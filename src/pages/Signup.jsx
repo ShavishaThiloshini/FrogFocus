@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useUser } from '../context/UserContext'
-import { User, Mail, Lock, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { User, Mail, Lock, ArrowRight, CheckCircle2, Eye, EyeOff } from 'lucide-react'
 
 const Signup = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
     const { signUpWithEmail } = useUser()
@@ -94,14 +95,21 @@ const Signup = () => {
                                         <Lock size={18} />
                                     </div>
                                     <input
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         required
-                                        className="block w-full pl-11 pr-4 py-4 bg-emerald-50/50 border-2 border-transparent rounded-2xl text-[#1A2E25] placeholder-emerald-300/60 focus:bg-white focus:border-emerald-400 focus:outline-none transition-all duration-200"
+                                        className="block w-full pl-11 pr-12 py-4 bg-emerald-50/50 border-2 border-transparent rounded-2xl text-[#1A2E25] placeholder-emerald-300/60 focus:bg-white focus:border-emerald-400 focus:outline-none transition-all duration-200"
                                         placeholder="Min. 8 characters"
                                         minLength={8}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute inset-y-0 right-0 pr-4 flex items-center text-emerald-500 hover:text-emerald-600 transition-colors"
+                                    >
+                                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                    </button>
                                 </div>
                             </div>
 
