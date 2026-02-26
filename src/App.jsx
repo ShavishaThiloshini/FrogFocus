@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { TimerProvider } from './context/TimerContext'
 import { UserProvider } from './context/UserContext'
 import { ThemeProvider, useTheme } from './context/ThemeContext'
@@ -31,7 +31,7 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ThemeProvider>
         <UserProvider>
           <TimerProvider>
@@ -39,7 +39,7 @@ function App() {
           </TimerProvider>
         </UserProvider>
       </ThemeProvider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

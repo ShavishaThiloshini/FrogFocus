@@ -14,15 +14,16 @@ const Frog = () => {
   }, [timeLeft, isRunning, isBreak])
 
   const getVideoPath = () => {
+    const base = import.meta.env.BASE_URL
     switch (frogState) {
       case 'studying':
-        return '/FOCUS.mp4'
+        return `${base}FOCUS.mp4`
       case 'resting':
-        return '/REST.mp4'
+        return `${base}REST.mp4`
       case 'celebrate':
       case 'idle':
       default:
-        return '/DEFAULT.mp4'
+        return `${base}DEFAULT.mp4`
     }
   }
 
